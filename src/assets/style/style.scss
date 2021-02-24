@@ -11,3 +11,10 @@ body,
 	display: flex;
 	flex-direction: column;
 }
+
+main {
+	z-index: 0;
+}
+.el-menu {
+	z-index: 1;
+}
