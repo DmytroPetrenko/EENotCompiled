@@ -22,4 +22,8 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.el-main {
+	flex: 1 0 auto;
+}
+</style>

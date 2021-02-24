@@ -29,9 +29,9 @@ export default class HeaderComponent extends Vue {
 
 <style lang="scss" scoped>
 .el-footer {
-	background-color: #545c64;
 	flex-shrink: 0;
-	padding: 0.5rem;
+	text-align: center;
+	background-color: #545c64;
 	color: white;
 	a {
 		text-decoration: none;
