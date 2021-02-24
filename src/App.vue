@@ -1,28 +1,25 @@
 <template>
 	<div id="app">
 		<HeaderComponent></HeaderComponent>
-		<router-view></router-view>
+		<el-main>
+			<router-view></router-view>
+		</el-main>
+		<FooterComponent></FooterComponent>
 	</div>
 </template>
 
 <script>
 import HeaderComponent from "./components/layout/HeaderComponent.vue"
+import FooterComponent from "./components/layout/FooterComponent.vue"
+import "./assets/style/style.scss"
 
 export default {
 	name: "app",
 	components: {
 		HeaderComponent,
+		FooterComponent,
 	},
 }
 </script>
 
-<style lang="scss" scoped>
-#app {
-	font-family: "Avenir", Helvetica, Arial, sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	text-align: center;
-	color: #2c3e50;
-	margin-top: 60px;
-}
-</style>
+<style lang="scss" scoped></style>

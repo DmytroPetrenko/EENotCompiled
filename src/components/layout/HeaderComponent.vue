@@ -20,7 +20,7 @@ export default class HeaderComponent extends Vue {
 
 	getWindowWidth() {
 		this.windowWidth = document.documentElement.clientWidth
-		if (this.windowWidth > 860) {
+		if (this.windowWidth > 870) {
 			this.windowWidthFlag = true
 		} else {
 			this.windowWidthFlag = false
@@ -46,7 +46,7 @@ export default class HeaderComponent extends Vue {
 	<el-header height="auto">
 		<el-row type="flex" justify="space-between">
 			<el-col class="header-logo" :span="12"
-				><a href="/"><img src="" alt="logo" srcset=""/></a
+				><a href="/"><img src="@/assets/img/logo.png" alt="logo" srcset=""/></a
 			></el-col>
 			<el-col class="header-menu" :span="12">
 				<el-button plain size="mini" class="mobile-nav" @click="menuNav">
@@ -162,7 +162,7 @@ export default class HeaderComponent extends Vue {
 	font-size: 14px;
 	height: 29px;
 	padding: 0 5px;
-	@media (max-width: 860px) {
+	@media (max-width: 870px) {
 		display: block;
 	}
 }
