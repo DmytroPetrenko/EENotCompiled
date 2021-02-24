@@ -1,10 +1,10 @@
 <template>
 	<div id="app">
-		<HeaderComponent></HeaderComponent>
+		<HeaderComponent v-if="$route.name != `404`"></HeaderComponent>
 		<el-main>
 			<router-view></router-view>
 		</el-main>
-		<FooterComponent></FooterComponent>
+		<FooterComponent v-if="$route.name != `404`"></FooterComponent>
 	</div>
 </template>
 

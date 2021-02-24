@@ -54,6 +54,7 @@
 						<el-input
 							name="message"
 							type="textarea"
+							:rows="5"
 							:placeholder="$t(`contact.form.message`)"
 							v-model="form.message"
 							required
