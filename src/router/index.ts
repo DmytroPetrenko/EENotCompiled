@@ -4,6 +4,7 @@ import Home from "../views/Home.vue"
 import Batteries from "../views/Batteries.vue"
 import Service from "../views/Service.vue"
 import Contact from "../views/Contact.vue"
+import Shop from "../views/Shop.vue"
 import PageNotFound from "../views/PageNotFound.vue"
 
 Vue.use(VueRouter)
@@ -28,6 +29,11 @@ const routes: Array<RouteConfig> = [
 		path: "/contact",
 		name: "Contact",
 		component: Contact,
+	},
+	{
+		path: "/shop",
+		name: "Shop",
+		component: Shop,
 	},
 	/*   {
     path: "*",

@@ -54,5 +54,9 @@
 			"message": "Сообщение",
 			"send": "Отправить сообщение"
 		}
+	},
+	"shop": {
+		"empty-page": "Page empty",
+		"addToCart": "Add"
 	}
 }
