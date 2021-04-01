@@ -15,7 +15,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator"
-import ItemView from "../components/ItemView"
+import ItemView from "../components/ItemView.vue"
 
 @Component({
 	components: {
