@@ -1,6 +1,11 @@
 <template>
 	<div class="shop">
 		<div v-if="items">
+			<el-row type="flex" justify="end">
+				<el-col>
+					<PopupView></PopupView>
+				</el-col>
+			</el-row>
 			<el-row type="flex" justify="center">
 				<el-col v-for="item in items" :key="item.id">
 					<ItemView :item="item"></ItemView>
@@ -16,10 +21,11 @@
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator"
 import ItemView from "../components/ItemView.vue"
+import PopupView from "../components/PopupView.vue"
 
 @Component({
 	components: {
-		ItemView,
+		ItemView, PopupView
 	},
 })
 export default class Shop extends Vue {
