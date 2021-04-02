@@ -33,11 +33,21 @@
 							name="country"
 							:placeholder="$t(`checkout.form.country`)"
 							v-model="form.country"
-							required
+						></el-input>
+					</el-form-item>
+					<el-form-item class="displaynone">
+						<el-input name="total" :value="total"></el-input>
+					</el-form-item>
+					<el-form-item>
+						<el-input
+							v-for="product in products"
+							:key="product.id"
+							:name="`Item` + product.id"
+							:value="product.title + ` Value: ` + product.price + ` Quantity: ` + product.quantity"
 						></el-input>
 					</el-form-item>
 					<el-form-item>
-						<el-button native-type="submit" type="primary">{{ $t("contact.form.send") }}</el-button>
+						<el-button native-type="submit" type="primary">Submit order</el-button>
 					</el-form-item>
 				</el-form>
 			</el-col>
@@ -45,7 +55,8 @@
 	</div>
 </template>
 
-<script lang="ts">
+<script>
+import { mapGetters, mapState } from "vuex"
 export default {
 	data() {
 		return {
@@ -57,12 +68,31 @@ export default {
 			},
 		}
 	},
+	computed: {
+		...mapState({
+			checkoutStatus: (state) => state.cart.checkoutStatus,
+		}),
+		...mapGetters("cart", {
+			products: "cartProducts",
+			total: "cartTotalPrice",
+		}),
+	},
+	methods: {
+		checkout(products) {
+			this.$store.dispatch("cart/checkout", products)
+		},
+	},
 }
 </script>
 
 <style lang="scss" scoped>
 // prettier-ignore
 @import url(https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap);
+
+.displaynone {
+	display: none;
+}
+
 .el-row {
 	flex-wrap: wrap;
 	margin-bottom: 20px;
