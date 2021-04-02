@@ -1,6 +1,6 @@
 <template>
 	<div class="shop">
-		<div v-if="items">
+		<!-- <div v-if="items">
 			<el-row type="flex" justify="end">
 				<el-col>
 					<PopupView></PopupView>
@@ -14,7 +14,14 @@
 		</div>
 		<div v-else>
 			{{ $t("shop.empty-page") }}
-		</div>
+		</div> -->
+
+		<h1>Shopping Cart Example</h1>
+		<hr />
+		<h2>Products</h2>
+		<ProductList />
+		<hr />
+		<ShoppingCart />
 	</div>
 </template>
 
@@ -22,10 +29,15 @@
 import { Vue, Component } from "vue-property-decorator"
 import ItemView from "../components/ItemView.vue"
 import PopupView from "../components/PopupView.vue"
+import ProductList from "../components/ProductList.vue"
+import ShoppingCart from "../components/ShoppingCart.vue"
 
 @Component({
 	components: {
-		ItemView, PopupView
+		ItemView,
+		PopupView,
+		ProductList,
+		ShoppingCart,
 	},
 })
 export default class Shop extends Vue {
