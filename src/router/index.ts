@@ -5,7 +5,8 @@ import Batteries from "../views/Batteries.vue"
 import Service from "../views/Service.vue"
 import Contact from "../views/Contact.vue"
 import Shop from "../views/Shop.vue"
-import PageNotFound from "../views/PageNotFound.vue"
+import Checkout from "../views/Checkout.vue"
+// import PageNotFound from "../views/PageNotFound.vue"
 
 Vue.use(VueRouter)
 
@@ -34,6 +35,11 @@ const routes: Array<RouteConfig> = [
 		path: "/shop",
 		name: "Shop",
 		component: Shop,
+	},
+	{
+		path: "/checkout",
+		name: "Checkout",
+		component: Checkout,
 	},
 	/*   {
     path: "*",

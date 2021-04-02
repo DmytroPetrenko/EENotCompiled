@@ -14,7 +14,10 @@
 							</ul>
 							<p>Total: {{ total }}</p>
 							<p>
-								<button :disabled="!products.length" @click="checkout(products)">Checkout</button>
+								<!-- @click="checkout(products)" -->
+								<button :disabled="!products.length" @click="$router.push('checkout')">
+									Checkout
+								</button>
 							</p>
 							<p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>
 						</div>
