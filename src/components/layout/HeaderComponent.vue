@@ -76,6 +76,9 @@ export default class HeaderComponent extends Vue {
 					<el-menu-item index="/contact" :route="{ name: 'Contact' }">
 						{{ $t("menu.contact") }}
 					</el-menu-item>
+					<el-menu-item index="/shop" :route="{ name: 'Shop' }">
+						{{ $t("menu.shop") }}
+					</el-menu-item>
 				</el-menu>
 				<el-menu
 					v-else
@@ -105,6 +108,11 @@ export default class HeaderComponent extends Vue {
 					<el-menu-item index="4"
 						><router-link @click.native="menuNav" to="/contact">{{
 							$t("menu.contact")
+						}}</router-link></el-menu-item
+					>
+					<el-menu-item index="5"
+						><router-link @click.native="menuNav" to="/shop">{{
+							$t("menu.shop")
 						}}</router-link></el-menu-item
 					>
 				</el-menu>

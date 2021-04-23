@@ -5,7 +5,7 @@
 				<div class="img-wrapper">
 					<img :src="require(`@/assets/img/${product.image}`)" class="image" />
 				</div>
-				<div class="item-main" style="padding: 14px;">
+				<div class="item-main">
 					<div>
 						<span>{{ product.title }}</span>
 					</div>
@@ -56,8 +56,17 @@ export default {
 }
 .item-main {
 	display: flex;
+	align-items: center;
 	flex-wrap: nowrap;
 	justify-content: space-between;
+	padding: 14px;
+	.price {
+		padding: 0px 10px;
+		white-space: pre;
+	}
+	.button-wrapper {
+		padding: 0 0 0 10px;
+	}
 }
 
 .button {
