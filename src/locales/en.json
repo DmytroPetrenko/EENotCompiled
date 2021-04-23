@@ -1,62 +1,69 @@
 {
 	"menu": {
 		"home": "Home",
-		"batteries": "Batteries",
+		"batteries": "Battery",
 		"service": "Service",
 		"contact": "Contact"
 	},
 	"batteries": {
-		"p1": "Наша компания предоставляет услуги сборки аккумуляторных батареи для всех моделей электромобилей Renault и Nissan. Если вам не хватает запаса хода на вашем электромобиле, или батарея вообще отсутствует, мы можем предложить разные варианты. Цена зависит от ёмкости и сложности установки, актуальную цену можете уточнить у менеджера по телефону +38 095 487 40 19.",
-		"p2": "Возможные варианты батарей:",
+		"p1": "Our company provides battery assembly services for all models of Renault and Nissan electric vehicles. If you are running out of range on your electric vehicle, or no battery at all, we have a variety of options. The price depends on the capacity and complexity of the installation, you can check the actual price with the manager by phone +38 095 487 40 19.",
+		"p2": "Possible battery options:",
 		"ul": {
-			"li1": "Батарея 24кВт на Renault Zoe",
-			"li2": "Батарея 42кВт на Renault Zoe",
-			"li3": "Батарея 24кВт на Renault Kangoo",
-			"li4": "Батарея 42кВт на Renault Fluence",
-			"li5": "Батарея 32кВт на Renault Fluence",
-			"li6": "Батарея 30кВт на Nissan Leaf",
-			"li7": "Батарея 40кВт на Nissan Leaf",
-			"li8": "Батарея 30кВт на Nissan ENV-200",
-			"li9": "Батарея 40кВт на Nissan ENV-200"
+			"li1": "Battery 24kWh for Renault Zoe",
+			"li2": "Battery 42kWh for Renault Zoe",
+			"li3": "Battery 24kWh for Renault Kangoo",
+			"li4": "Battery 42kWh for Renault Fluence",
+			"li5": "Battery 32kWh for Renault Fluence",
+			"li6": "Battery 30kWh for Nissan Leaf",
+			"li7": "Battery 40kWh for Nissan Leaf",
+			"li8": "Battery 30kWh for Nissan ENV-200",
+			"li9": "Battery 40kWh for Nissan ENV-200"
 		}
 	},
 	"service": {
-		"p1": "Наш сервис предоставляет полный спектр услуг по ремонту и обслуживанию электромобилей и плагин-гибридов, за исключением кузовного ремонта. Мы профильно специализируемся по ремонту высоковольтной системы.",
+		"p1": "Our service provides a full range of repair and maintenance services for electric vehicles and plug-in hybrids, with the exception of body repair. We are specialized in high-voltage system repair.",
 		"services": {
 			"service1": {
-				"h": "Плановое техническое обслуживание (ТО)",
-				"p": "Когда проходит сервисный интервал, нужно делать обслуживание машины. Для электромобиля обычно это замена масла в редукторе, салонного фильтра, и диагностика. В зависимости от того какой у вас электромобиль сервисные интервалы могут отличатся, в среднем ТО нужно делать каждых 30 тис км."
+				"h": "Scheduled maintenance",
+				"p": "When the service interval passes, the machine needs to be serviced. For an electric vehicle, this is usually a change of oil in the gearbox, cabin filter, and diagnostics. Depending on what kind of electric car you have, the service intervals may differ, on average, MOT needs to be done every 30 thousand km."
 			},
 			"service2": {
-				"h": "Ремонт высоковольтных систем",
-				"p": "Мы специализируемся по ремонту высоковольтной системы и предоставляем любые услуги по ремонту: высоковольтных батарей, электромоторов, блоков управления. Устраняем проблемы, связанные с пробоем изоляции или выхода из строя ячеек высоковольтной батареи. Также, устраняем проблемы с кондиционером или отопителем. Ремонт зарядных блоков."
+				"h": "Service high-voltage systems ",
+				"p": "We specialize in the repair of high-voltage systems and provide any repair service: high-voltage batteries, electric motors, control units. We eliminate problems associated with insulation breakdown or failure of high-voltage battery cells. Also, we eliminate problems with the air conditioner or heater. Repair onboard charging blocks."
 			},
 			"service3": {
-				"h": "Продажа запчастей",
-				"p": "Большой асортимент запчастей на электромобили, как оригинальных так и заменителей. Своя разборка Renault ZOE."
+				"h": "Parts",
+				"p": "A large assortment of parts for electric vehicles, original and substitutes. Own disassembly of Renault ZOE."
 			},
 			"service4": {
-				"h": "Восстановление системы безопасности SRS после ДТП",
-				"p": "У нас вы можете заказать, комплексное восстановление системы SRS Airbag. Замена подушек и ремней безопасности, устранение CRASH с блока SRS, удаление ошибок."
+				"h": "Repair SRS system after crash",
+				"p": "You can order a complex restoration of the SRS Airbag system from us. Replacement airbags and seat belts, dalate CRASH data from the SRS unit."
 			}
 		},
-		"p2": "Если у вашего электромобиля, или гибрида возникли проблемы, звоните нам!"
+		"p2": "If your electric car or hybrid is having problems, call us!"
 	},
 	"contact": {
-		"h1": "Контактная форма",
-		"h2": "Не стесняйтесь обращаться к нам",
-		"h3": "Готовы к предложениям и сотрудничеству",
-		"phone": "Телефон",
+		"h1": "Contact form",
+		"h2": "Feel free to contact us",
+		"h3": "Ready for suggestions and cooperation",
+		"phone": "Phone",
 		"form": {
-			"name": "Ваше имя",
-			"phone": "Телефон",
+			"name": "Name",
+			"phone": "Phone number",
 			"email": "Email",
-			"message": "Сообщение",
-			"send": "Отправить сообщение"
+			"message": "Message",
+			"send": "Send mail"
 		}
 	},
 	"shop": {
 		"empty-page": "Page empty",
 		"addToCart": "Add"
+	},
+	"checkout": {
+		"title": "Checkout",
+		"form": {
+			"country": "Country",
+			"submit": "Submit order"
+		}
 	}
 }

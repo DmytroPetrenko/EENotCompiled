@@ -2,7 +2,7 @@
 	<div class="contact">
 		<el-row type="flex" class="row-bg" justify="center">
 			<el-col :span="20">
-				<h2>Оформить заказ</h2>
+				<h2>{{ $t(`checkout.title`) }}</h2>
 				<el-form action="https://formspree.io/f/mleogdwn" method="POST" ref="form" :model="form">
 					<el-form-item>
 						<el-input
@@ -47,7 +47,9 @@
 						></el-input>
 					</el-form-item>
 					<el-form-item>
-						<el-button native-type="submit" type="primary">Submit order</el-button>
+						<el-button native-type="submit" type="primary">
+							{{ $t("checkout.form.submit") }}
+						</el-button>
 					</el-form-item>
 				</el-form>
 			</el-col>

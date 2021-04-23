@@ -56,7 +56,14 @@
 		}
 	},
 	"shop": {
-		"empty-page": "Page empty",
-		"addToCart": "Add"
+		"empty-page": "Пустая страница",
+		"addToCart": "Добавить"
+	},
+	"checkout": {
+		"title": "Оформить заказ",
+		"form": {
+			"country": "Страна",
+			"submit": "Подтвердить заказ"
+		}
 	}
 }
