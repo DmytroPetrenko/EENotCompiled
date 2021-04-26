@@ -20,7 +20,7 @@ export default class HeaderComponent extends Vue {
 
 	getWindowWidth() {
 		this.windowWidth = document.documentElement.clientWidth
-		if (this.windowWidth > 870) {
+		if (this.windowWidth > 960) {
 			this.windowWidthFlag = true
 		} else {
 			this.windowWidthFlag = false
@@ -179,7 +179,7 @@ export default class HeaderComponent extends Vue {
 	font-size: 14px;
 	height: 29px;
 	padding: 0 5px;
-	@media (max-width: 870px) {
+	@media (max-width: 960px) {
 		display: block;
 	}
 }

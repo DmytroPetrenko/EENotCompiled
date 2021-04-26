@@ -58,7 +58,13 @@
 	},
 	"shop": {
 		"empty-page": "Page empty",
-		"addToCart": "Add"
+		"addToCart": "Add",
+		"cart": {
+			"header": "Your Cart",
+			"failText": "Please add some products to cart.",
+			"total": "Total",
+			"checkout": "Checkout"
+		}
 	},
 	"checkout": {
 		"title": "Checkout",

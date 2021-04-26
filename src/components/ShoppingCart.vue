@@ -5,21 +5,23 @@
 				<el-row>
 					<el-col>
 						<div class="cart">
-							<h2>Your Cart</h2>
-							<p v-show="!products.length"><i>Please add some products to cart.</i></p>
+							<h2>{{ $t("shop.cart.header") }}</h2>
+							<p v-show="!products.length">
+								<i>{{ $t("shop.cart.failText") }}</i>
+							</p>
 							<ul>
 								<li v-for="product in products" :key="product.id">
 									<div class="img-wrapper">
 										<img :src="require(`@/assets/img/${product.image}`)" class="image" />
 									</div>
-									{{ product.title }} - {{ product.price }} x {{ product.quantity }}
+									<p>{{ product.title }}: ${{ product.price }} x {{ product.quantity }}</p>
 								</li>
 							</ul>
-							<p>Total: {{ total }}</p>
+							<p>{{ $t("shop.cart.total") }}: {{ total }}</p>
 							<p>
 								<!-- @click="checkout(products)" -->
 								<button :disabled="!products.length" @click="$router.push('checkout')">
-									Checkout
+									{{ $t("shop.cart.checkout") }}
 								</button>
 							</p>
 							<p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>
@@ -65,11 +67,24 @@ export default {
 .el-col > span {
 	float: right;
 }
-.img-wrapper {
-	padding: 5px;
+ul {
+	padding: 0;
 }
-.image {
-	width: 100%;
-	display: block;
+li {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	padding: 5px 0;
+	.img-wrapper {
+		padding: 0 10px 0 0;
+		width: 20%;
+	}
+	.image {
+		width: 100%;
+		display: block;
+	}
+	p {
+		margin: 0;
+	}
 }
 </style>
