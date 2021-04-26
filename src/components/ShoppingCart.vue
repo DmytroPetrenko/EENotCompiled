@@ -1,7 +1,7 @@
 <template>
 	<el-row>
 		<el-col>
-			<el-popover placement="top-end" width="400" trigger="click">
+			<el-popover placement="top" width="400" trigger="click">
 				<el-row>
 					<el-col>
 						<div class="cart">
@@ -9,6 +9,9 @@
 							<p v-show="!products.length"><i>Please add some products to cart.</i></p>
 							<ul>
 								<li v-for="product in products" :key="product.id">
+									<div class="img-wrapper">
+										<img :src="require(`@/assets/img/${product.image}`)" class="image" />
+									</div>
 									{{ product.title }} - {{ product.price }} x {{ product.quantity }}
 								</li>
 							</ul>
@@ -23,9 +26,9 @@
 						</div>
 					</el-col>
 				</el-row>
-				<el-button class="custom-icon" icon="el-icon-shopping-cart-2" slot="reference">{{
-					products.length
-				}}</el-button>
+				<el-button class="custom-icon" icon="el-icon-shopping-cart-2" slot="reference">
+					{{ count }}
+				</el-button>
 			</el-popover>
 		</el-col>
 	</el-row>
@@ -41,6 +44,7 @@ export default {
 		...mapGetters("cart", {
 			products: "cartProducts",
 			total: "cartTotalPrice",
+			count: "itemsInCart",
 		}),
 	},
 	methods: {
@@ -60,5 +64,12 @@ export default {
 }
 .el-col > span {
 	float: right;
+}
+.img-wrapper {
+	padding: 5px;
+}
+.image {
+	width: 100%;
+	display: block;
 }
 </style>
