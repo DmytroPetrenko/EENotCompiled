@@ -17,7 +17,7 @@
 									<p>{{ product.title }}: ${{ product.price }} x {{ product.quantity }}</p>
 								</li>
 							</ul>
-							<p>{{ $t("shop.cart.total") }}: {{ total }}</p>
+							<p>{{ $t("shop.cart.total") }}: {{ total }} $</p>
 							<p>
 								<!-- @click="checkout(products)" -->
 								<button :disabled="!products.length" @click="$router.push('checkout')">

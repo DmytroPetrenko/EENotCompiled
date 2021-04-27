@@ -16,7 +16,7 @@ const _products = [
 		price: 400.0,
 		inventory: 1000,
 		description: "Lorem",
-		image: "logo.png",
+		image: "NissanLeafMotor3.jpeg",
 	},
 	{
 		id: 3,
@@ -24,7 +24,7 @@ const _products = [
 		price: 300.0,
 		inventory: 5000,
 		description: "Lorem",
-		image: "logo.png",
+		image: "NissanLeafInvertor.jpeg",
 	},
 	{
 		id: 4,
@@ -32,7 +32,7 @@ const _products = [
 		price: 150.0,
 		inventory: 2000,
 		description: "Lorem",
-		image: "logo.png",
+		image: "nissanrelays.jpg",
 	},
 	{
 		id: 5,
@@ -48,7 +48,7 @@ const _products = [
 		price: 15.0,
 		inventory: 5000,
 		description: "Lorem",
-		image: "logo.png",
+		image: "ELM327.jpg",
 	},
 ]
 
