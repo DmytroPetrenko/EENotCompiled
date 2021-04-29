@@ -8,4 +8,8 @@ module.exports = {
 		},
 	},
 	publicPath: "/",
+	devServer: {
+		compress: true,
+		public: "ee-not-compiled-dz97b.ondigitalocean.app", // That solved it
+	},
 }
