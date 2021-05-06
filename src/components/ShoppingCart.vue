@@ -12,7 +12,7 @@
 							<ul>
 								<li v-for="product in products" :key="product.id">
 									<div class="img-wrapper">
-										<img :src="require(`@/assets/img/${product.image}`)" class="image" />
+										<img :src="require(`@/assets/img/${product.images[0]}`)" class="image" />
 									</div>
 									<p>{{ product.title }}: ${{ product.price }} x {{ product.quantity }}</p>
 								</li>
