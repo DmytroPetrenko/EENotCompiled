@@ -3,7 +3,13 @@
 		<el-col v-for="product in products" :key="product.id">
 			<el-card :body-style="{ padding: '0px' }">
 				<div class="img-wrapper">
-					<img :src="require(`@/assets/img/${product.image}`)" class="image" />
+					<!-- <img :src="require(`@/assets/img/${product.image}`)" class="image" /> -->
+
+					<el-carousel :autoplay="false" trigger="click">
+						<el-carousel-item v-for="image in product.images" :key="image">
+							<img :src="require(`@/assets/img/${image}`)" class="image" />
+						</el-carousel-item>
+					</el-carousel>
 				</div>
 				<div class="item-main">
 					<div>
@@ -76,10 +82,27 @@ export default {
 
 .img-wrapper {
 	padding: 5px;
-}
+	.el-carousel__button {
+		width: 14px;
+		height: 14px;
+		border-radius: 14px;
+		background-color: red;
+	}
+	.el-carousel-item {
+		position: relative;
+	}
 
-.image {
-	width: 100%;
-	display: block;
+	.image {
+		max-height: 100%;
+		max-width: 100%;
+		width: auto;
+		height: auto;
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		right: 0;
+		margin: auto;
+	}
 }
 </style>

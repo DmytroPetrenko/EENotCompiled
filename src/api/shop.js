@@ -8,7 +8,7 @@ const _products = [
 		price: 650.0,
 		inventory: 2000,
 		description: "Lorem",
-		image: "logo.png",
+		images: ["logo.png"],
 	},
 	{
 		id: 2,
@@ -16,7 +16,7 @@ const _products = [
 		price: 400.0,
 		inventory: 1000,
 		description: "Lorem",
-		image: "NissanLeafMotor3.jpeg",
+		images: ["NissanLeafMotor3.jpeg", "NissanLeafMotor2.jpg", "NissanLeafMotor.jpg"],
 	},
 	{
 		id: 3,
@@ -24,7 +24,7 @@ const _products = [
 		price: 300.0,
 		inventory: 5000,
 		description: "Lorem",
-		image: "NissanLeafInvertor.jpeg",
+		images: ["NissanLeafInvertor.jpeg"],
 	},
 	{
 		id: 4,
@@ -32,7 +32,7 @@ const _products = [
 		price: 150.0,
 		inventory: 2000,
 		description: "Lorem",
-		image: "nissanrelays.jpg",
+		images: ["nissanrelays.jpg"],
 	},
 	{
 		id: 5,
@@ -40,7 +40,7 @@ const _products = [
 		price: 250.0,
 		inventory: 1000,
 		description: "Lorem",
-		image: "logo.png",
+		images: ["logo.png"],
 	},
 	{
 		id: 6,
@@ -48,7 +48,7 @@ const _products = [
 		price: 15.0,
 		inventory: 5000,
 		description: "Lorem",
-		image: "ELM327.jpg",
+		images: ["ELM327.jpg"],
 	},
 ]
 
