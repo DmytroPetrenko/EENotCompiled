@@ -6,7 +6,11 @@ const state = () => ({
 })
 
 // getters
-const getters = {}
+const getters = {
+	getById: (state, getters) => (id) => {
+		return state.all.find((product) => product.id === parseInt(id))
+	},
+}
 
 // actions
 const actions = {

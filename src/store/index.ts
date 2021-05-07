@@ -10,9 +10,6 @@ const debug = process.env.NODE_ENV !== "production"
 // const products = require("./modules/products")
 
 export default new Vuex.Store({
-	state: {},
-	mutations: {},
-	actions: {},
 	modules: { cart, products },
 	strict: debug,
 })

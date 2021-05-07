@@ -2,7 +2,7 @@
 	<el-row type="flex" justify="center">
 		<el-col v-for="product in products" :key="product.id">
 			<el-card :body-style="{ padding: '0px' }">
-				<div class="img-wrapper" @click="viewMore(product.id)">
+				<div class="img-wrapper" @click="viewMore(product.id, product)">
 					<el-carousel :autoplay="false" trigger="click">
 						<el-carousel-item v-for="image in product.images" :key="image">
 							<img :src="require(`@/assets/img/${image}`)" class="image" />
@@ -43,10 +43,10 @@ export default {
 	methods: {
 		...mapActions("cart", ["addProductToCart"]),
 
-		viewMore: function(id) {
+		viewMore: function(id, product) {
 			this.$router.push({
 				name: "Product",
-				params: { id },
+				params: { id, product },
 			})
 		},
 	},
