@@ -6,6 +6,7 @@ import Service from "../views/Service.vue"
 import Contact from "../views/Contact.vue"
 import Shop from "../views/Shop.vue"
 import Checkout from "../views/Checkout.vue"
+import Product from "../views/ProductPage.vue"
 // import PageNotFound from "../views/PageNotFound.vue"
 
 Vue.use(VueRouter)
@@ -35,6 +36,11 @@ const routes: Array<RouteConfig> = [
 		path: "/shop",
 		name: "Shop",
 		component: Shop,
+	},
+	{
+		path: "/shop/product/:id",
+		name: "Product",
+		component: Product,
 	},
 	{
 		path: "/checkout",

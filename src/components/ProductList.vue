@@ -2,9 +2,7 @@
 	<el-row type="flex" justify="center">
 		<el-col v-for="product in products" :key="product.id">
 			<el-card :body-style="{ padding: '0px' }">
-				<div class="img-wrapper">
-					<!-- <img :src="require(`@/assets/img/${product.image}`)" class="image" /> -->
-
+				<div class="img-wrapper" @click="viewMore(product.id)">
 					<el-carousel :autoplay="false" trigger="click">
 						<el-carousel-item v-for="image in product.images" :key="image">
 							<img :src="require(`@/assets/img/${image}`)" class="image" />
@@ -39,9 +37,18 @@ export default {
 	computed: mapState({
 		products: (state) => state.products.all,
 	}),
-	methods: mapActions("cart", ["addProductToCart"]),
-	created() {
+	created: function() {
 		this.$store.dispatch("products/getAllProducts")
+	},
+	methods: {
+		...mapActions("cart", ["addProductToCart"]),
+
+		viewMore: function(id) {
+			this.$router.push({
+				name: "Product",
+				params: { id },
+			})
+		},
 	},
 }
 </script>
