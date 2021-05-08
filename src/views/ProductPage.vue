@@ -1,6 +1,10 @@
 <template>
-	<el-row type="flex" justify="center">
-		<el-col class="main-columns" :span="8">
+	<el-row :gutter="10">
+		<el-col
+			:xs="{ span: 24, offset: 0 }"
+			:sm="{ span: 16, offset: 4 }"
+			:md="{ span: 10, offset: 2 }"
+		>
 			<el-row>
 				<el-carousel :autoplay="false" trigger="click" indicator-position="none" ref="carousel">
 					<el-carousel-item v-for="image in product.images" :key="image" :name="image">
@@ -14,8 +18,19 @@
 				</div>
 			</el-row>
 		</el-col>
-		<el-col class="main-columns" :span="8">
-			<h1>{{ product.title }}</h1>
+		<el-col
+			:xs="{ span: 24, offset: 0 }"
+			:sm="{ span: 16, offset: 4 }"
+			:md="{ span: 10, offset: 0 }"
+		>
+			<h2>{{ product.title }}</h2>
+			<el-divider></el-divider>
+			<h1>${{ product.price }}</h1>
+
+			<div class="description">
+				<el-divider content-position="left">{{ $t("shop.product.description") }}</el-divider>
+				<p>{{ product.description }}</p>
+			</div>
 		</el-col>
 	</el-row>
 </template>
@@ -50,9 +65,6 @@ export default class ProductPage extends Vue {
 </script>
 
 <style lang="scss" scoped>
-.main-columns {
-	margin: 0 5px;
-}
 .el-carousel {
 	.el-carousel-item {
 		position: relative;
@@ -69,11 +81,13 @@ export default class ProductPage extends Vue {
 		left: 0;
 		right: 0;
 		margin: auto;
+		padding: 0 20px;
+		box-sizing: border-box;
 	}
 }
 
 .suggested-image {
-	padding: 13px 0;
+	padding: 13px 20px;
 	width: 100%;
 	display: table;
 	.image {
@@ -89,5 +103,9 @@ export default class ProductPage extends Vue {
 			margin-right: auto;
 		}
 	}
+}
+
+.description {
+	margin-top: 60px;
 }
 </style>

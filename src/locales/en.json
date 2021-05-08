@@ -64,6 +64,9 @@
 			"failText": "Please add some products to cart.",
 			"total": "Total",
 			"checkout": "Checkout"
+		},
+		"product": {
+			"description": "Description"
 		}
 	},
 	"checkout": {
