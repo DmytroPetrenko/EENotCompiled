@@ -8,7 +8,7 @@ const _products = [
 		price: 650.0,
 		inventory: 2000,
 		description: "Lorem",
-		images: ["logo.png"],
+		images: ["noImage.jpg"],
 	},
 	{
 		id: 2,
@@ -40,7 +40,7 @@ const _products = [
 		price: 250.0,
 		inventory: 1000,
 		description: "Lorem",
-		images: ["logo.png"],
+		images: ["noImage.jpg"],
 	},
 	{
 		id: 6,

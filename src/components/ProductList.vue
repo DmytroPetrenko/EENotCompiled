@@ -22,8 +22,9 @@
 							class="button"
 							:disabled="!product.inventory"
 							@click="addProductToCart(product)"
-							>{{ $t("shop.addToCart") }}</el-button
 						>
+							{{ $t("shop.addToCart") }}
+						</el-button>
 					</div>
 				</div>
 			</el-card>
@@ -110,6 +111,7 @@ export default {
 		left: 0;
 		right: 0;
 		margin: auto;
+		cursor: pointer;
 	}
 }
 </style>

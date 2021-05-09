@@ -1,51 +1,69 @@
 <template>
-	<el-row :gutter="10">
-		<el-col
-			:xs="{ span: 24, offset: 0 }"
-			:sm="{ span: 16, offset: 4 }"
-			:md="{ span: 10, offset: 2 }"
-		>
-			<el-row>
-				<el-carousel :autoplay="false" trigger="click" indicator-position="none" ref="carousel">
-					<el-carousel-item v-for="image in product.images" :key="image" :name="image">
-						<img :src="require(`@/assets/img/${image}`)" class="image" />
-					</el-carousel-item>
-				</el-carousel>
-			</el-row>
-			<el-row class="suggested-image">
-				<div class="image" v-for="image in product.images" :key="image">
-					<img :src="require(`@/assets/img/${image}`)" @click="setActiveItem(image)" />
-				</div>
-			</el-row>
-		</el-col>
-		<el-col
-			:xs="{ span: 24, offset: 0 }"
-			:sm="{ span: 16, offset: 4 }"
-			:md="{ span: 10, offset: 0 }"
-		>
-			<h2>{{ product.title }}</h2>
-			<el-divider></el-divider>
-			<h1>${{ product.price }}</h1>
+	<div>
+		<ShoppingCart />
+		<el-row :gutter="10">
+			<el-col
+				:xs="{ span: 24, offset: 0 }"
+				:sm="{ span: 16, offset: 4 }"
+				:md="{ span: 10, offset: 2 }"
+			>
+				<el-row>
+					<el-carousel :autoplay="false" trigger="click" indicator-position="none" ref="carousel">
+						<el-carousel-item v-for="image in product.images" :key="image" :name="image">
+							<img :src="require(`@/assets/img/${image}`)" class="image" />
+						</el-carousel-item>
+					</el-carousel>
+				</el-row>
+				<el-row class="suggested-image">
+					<div class="image" v-for="image in product.images" :key="image">
+						<img :src="require(`@/assets/img/${image}`)" @click="setActiveItem(image)" />
+					</div>
+				</el-row>
+			</el-col>
+			<el-col
+				:xs="{ span: 24, offset: 0 }"
+				:sm="{ span: 16, offset: 4 }"
+				:md="{ span: 10, offset: 0 }"
+			>
+				<h2>{{ product.title }}</h2>
+				<el-divider></el-divider>
+				<h1>${{ product.price }}</h1>
+				<el-button
+					type="text"
+					class="button"
+					:disabled="!product.inventory"
+					@click="addThisProductToCart(product)"
+				>
+					{{ $t("shop.product.addToCart") }}
+				</el-button>
 
-			<div class="description">
-				<el-divider content-position="left">{{ $t("shop.product.description") }}</el-divider>
-				<p>{{ product.description }}</p>
-			</div>
-		</el-col>
-	</el-row>
+				<div class="description">
+					<el-divider content-position="left">{{ $t("shop.product.description") }}</el-divider>
+					<p>{{ product.description }}</p>
+				</div>
+			</el-col>
+		</el-row>
+	</div>
 </template>
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator"
-import { namespace } from "vuex-class"
+import { namespace, Action } from "vuex-class"
+import ShoppingCart from "../components/ShoppingCart.vue"
+
 const Products = namespace("products")
+const Cart = namespace("cart")
 
 @Component({
 	name: "ProductPage",
+	components: {
+		ShoppingCart,
+	},
 })
 export default class ProductPage extends Vue {
 	@Products.Getter getById: any
 	@Products.Action getAllProducts: any
+	@Cart.Action addProductToCart: any
 	get myCarousel(): any {
 		return this.$refs.carousel
 	}
@@ -60,6 +78,10 @@ export default class ProductPage extends Vue {
 
 	setActiveItem(index) {
 		this.myCarousel.setActiveItem(index)
+	}
+
+	addThisProductToCart(product) {
+		this.addProductToCart(product)
 	}
 }
 </script>
@@ -101,6 +123,7 @@ export default class ProductPage extends Vue {
 			display: block;
 			margin-left: auto;
 			margin-right: auto;
+			cursor: pointer;
 		}
 	}
 }
