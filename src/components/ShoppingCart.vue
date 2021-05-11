@@ -1,7 +1,7 @@
 <template>
 	<el-row>
 		<el-col>
-			<el-popover placement="top" width="400" trigger="click">
+			<el-popover placement="top" trigger="click">
 				<el-row>
 					<el-col>
 						<div class="cart">
@@ -19,10 +19,9 @@
 							</ul>
 							<p>{{ $t("shop.cart.total") }}: {{ total }} $</p>
 							<p>
-								<!-- @click="checkout(products)" -->
-								<button :disabled="!products.length" @click="$router.push('checkout')">
+								<el-button :disabled="!products.length" @click="$router.push('checkout')">
 									{{ $t("shop.cart.checkout") }}
-								</button>
+								</el-button>
 							</p>
 							<p v-show="checkoutStatus">Checkout {{ checkoutStatus }}.</p>
 						</div>
@@ -87,5 +86,11 @@ li {
 	p {
 		margin: 0;
 	}
+}
+</style>
+<style>
+.el-popover {
+	max-width: 400px;
+	width: 90%;
 }
 </style>

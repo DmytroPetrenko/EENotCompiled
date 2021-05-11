@@ -35,15 +35,22 @@
 							v-model="form.country"
 						></el-input>
 					</el-form-item>
-					<el-form-item class="displaynone">
-						<el-input name="total" :value="total"></el-input>
+					<el-form-item>
+						<el-input name="total" :value="`Total price: $` + total" disabled></el-input>
 					</el-form-item>
 					<el-form-item>
 						<el-input
 							v-for="product in products"
 							:key="product.id"
 							:name="`Item` + product.id"
-							:value="product.title + ` Value: ` + product.price + ` Quantity: ` + product.quantity"
+							:value="
+								product.title +
+									` Product price: $` +
+									product.price +
+									` Quantity: ` +
+									product.quantity
+							"
+							disabled
 						></el-input>
 					</el-form-item>
 					<el-form-item>
