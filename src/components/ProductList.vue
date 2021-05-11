@@ -3,7 +3,11 @@
 		<el-col v-for="product in products" :key="product.id">
 			<el-card :body-style="{ padding: '0px' }">
 				<div class="img-wrapper" @click="viewMore(product.id, product)">
-					<el-carousel :autoplay="false" trigger="click">
+					<el-carousel
+						:autoplay="false"
+						trigger="click"
+						:arrow="product.images.length <= 1 ? `never` : `hover`"
+					>
 						<el-carousel-item v-for="image in product.images" :key="image">
 							<img :src="require(`@/assets/img/${image}`)" class="image" />
 						</el-carousel-item>

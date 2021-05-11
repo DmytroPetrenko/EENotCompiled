@@ -8,13 +8,19 @@
 				:md="{ span: 10, offset: 2 }"
 			>
 				<el-row>
-					<el-carousel :autoplay="false" trigger="click" indicator-position="none" ref="carousel">
+					<el-carousel
+						:autoplay="false"
+						trigger="click"
+						indicator-position="none"
+						ref="carousel"
+						:arrow="product.images.length <= 1 ? `never` : `hover`"
+					>
 						<el-carousel-item v-for="image in product.images" :key="image" :name="image">
 							<img :src="require(`@/assets/img/${image}`)" class="image" />
 						</el-carousel-item>
 					</el-carousel>
 				</el-row>
-				<el-row class="suggested-image">
+				<el-row class="suggested-image" v-show="product.images.length <= 1 ? false : true">
 					<div class="image" v-for="image in product.images" :key="image">
 						<img :src="require(`@/assets/img/${image}`)" @click="setActiveItem(image)" />
 					</div>
