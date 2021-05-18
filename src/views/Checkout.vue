@@ -3,7 +3,7 @@
 		<el-row type="flex" class="row-bg" justify="center">
 			<el-col :span="20">
 				<h2>{{ $t(`checkout.title`) }}</h2>
-				<el-form action="https://formspree.io/f/mleogdwn" method="POST" ref="form" :model="form">
+				<el-form method="POST" ref="form" :model="form">
 					<el-form-item>
 						<el-input
 							name="name"
@@ -54,7 +54,7 @@
 						></el-input>
 					</el-form-item>
 					<el-form-item>
-						<el-button native-type="submit" type="primary">
+						<el-button type="primary" @click="submitForm()">
 							{{ $t("checkout.form.submit") }}
 						</el-button>
 					</el-form-item>
@@ -66,6 +66,8 @@
 
 <script>
 import { mapGetters, mapState } from "vuex"
+import axios from "axios"
+
 export default {
 	data() {
 		return {
@@ -85,10 +87,60 @@ export default {
 			products: "cartProducts",
 			total: "cartTotalPrice",
 		}),
+		productTitles: function() {
+			let arr = []
+			for (let i = 0; i < this.products.length; i++) {
+				const product = this.products[i]
+				arr[i] = product.title
+			}
+			return arr
+		},
+		productPrices: function() {
+			let arr = []
+			for (let i = 0; i < this.products.length; i++) {
+				const product = this.products[i]
+				arr[i] = product.price
+			}
+			return arr
+		},
+		productQuantities: function() {
+			let arr = []
+			for (let i = 0; i < this.products.length; i++) {
+				const product = this.products[i]
+				arr[i] = product.quantity
+			}
+			return arr
+		},
 	},
 	methods: {
 		checkout(products) {
 			this.$store.dispatch("cart/checkout", products)
+		},
+		submitForm() {
+			axios
+				.post("https://serve-node-ee.herokuapp.com/checkout", {
+					name: this.form.name,
+					phone: this.form.phone,
+					email: this.form.email,
+					country: this.form.country,
+					total: this.total,
+					productTitles: this.productTitles,
+					productPrices: this.productPrices,
+					productQuantities: this.productQuantities,
+				})
+				.then((response) => {
+					const status = JSON.parse(response.data.response.status)
+					console.log(status)
+
+					//redirect logic
+					if (status == "200") {
+						this.$router.push("/shop")
+					}
+				})
+				.catch((error) => {
+					console.log(error)
+					this.$router.push("/shop")
+				})
 		},
 	},
 }
