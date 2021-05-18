@@ -25,7 +25,7 @@
 						<p>Email: electricenginescar@gmail.com</p>
 					</div>
 				</div>
-				<el-form action="https://formspree.io/f/mleogdwn" method="POST" ref="form" :model="form">
+				<el-form method="POST" ref="form" :model="form">
 					<el-form-item>
 						<el-input
 							name="name"
@@ -61,7 +61,9 @@
 						></el-input>
 					</el-form-item>
 					<el-form-item>
-						<el-button native-type="submit" type="primary">{{ $t("contact.form.send") }}</el-button>
+						<el-button type="primary" @click="submitForm()">{{
+							$t("contact.form.send")
+						}}</el-button>
 					</el-form-item>
 				</el-form>
 			</el-col>
@@ -70,6 +72,8 @@
 </template>
 
 <script lang="ts">
+import axios from "axios"
+
 export default {
 	data() {
 		return {
@@ -80,6 +84,30 @@ export default {
 				message: "",
 			},
 		}
+	},
+	methods: {
+		submitForm() {
+			axios
+				.post("https://serve-node-ee.herokuapp.com/contact", {
+					name: this.form.name,
+					phone: this.form.phone,
+					email: this.form.email,
+					message: this.form.message,
+				})
+				.then((response) => {
+					const status = JSON.parse(response.data.response.status)
+					console.log(status)
+
+					//redirect logic
+					if (status == "200") {
+						this.$router.push("/")
+					}
+				})
+				.catch((error) => {
+					console.log(error)
+					this.$router.push("/")
+				})
+		},
 	},
 }
 </script>
