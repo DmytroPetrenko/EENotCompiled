@@ -88,7 +88,7 @@ export default {
 			total: "cartTotalPrice",
 		}),
 		productTitles: function() {
-			let arr = []
+			const arr = []
 			for (let i = 0; i < this.products.length; i++) {
 				const product = this.products[i]
 				arr[i] = product.title
@@ -96,7 +96,7 @@ export default {
 			return arr
 		},
 		productPrices: function() {
-			let arr = []
+			const arr = []
 			for (let i = 0; i < this.products.length; i++) {
 				const product = this.products[i]
 				arr[i] = product.price
@@ -104,7 +104,7 @@ export default {
 			return arr
 		},
 		productQuantities: function() {
-			let arr = []
+			const arr = []
 			for (let i = 0; i < this.products.length; i++) {
 				const product = this.products[i]
 				arr[i] = product.quantity
