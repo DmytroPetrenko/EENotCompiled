@@ -1,7 +1,7 @@
 <template>
 	<div class="contact">
 		<el-row type="flex" class="row-bg" justify="center">
-			<el-col :span="8">
+			<el-col :xs="{ span: 24 }" :sm="{ span: 12 }" :lg="{ span: 8 }">
 				<div class="google-map">
 					<iframe
 						frameborder="0"
@@ -12,7 +12,7 @@
 					</iframe>
 				</div>
 			</el-col>
-			<el-col :span="8">
+			<el-col :xs="{ span: 24 }" :sm="{ span: 12 }" :lg="{ span: 8 }">
 				<h2>{{ $t("contact.h1") }}</h2>
 				<div class="icon-message-block">
 					<i class="el-icon-message"></i>
