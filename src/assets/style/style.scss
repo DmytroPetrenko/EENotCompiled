@@ -18,3 +18,17 @@ main {
 .el-menu {
 	z-index: 1;
 }
+.el-loading-mask .el-loading-spinner {
+	margin-top: -15px;
+	text-align: left;
+	.circular {
+		height: 21px;
+		width: 21px;
+		vertical-align: middle;
+	}
+	p {
+		margin: 0;
+		padding-left: 5px;
+		display: inline-block;
+	}
+}

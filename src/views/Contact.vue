@@ -66,6 +66,9 @@
 						}}</el-button>
 					</el-form-item>
 				</el-form>
+				<div class="processing-message" v-if="processing">
+					<div v-loading="processing" element-loading-text="Loading..." customClass="loading"></div>
+				</div>
 			</el-col>
 		</el-row>
 	</div>
@@ -83,10 +86,15 @@ export default {
 				email: "",
 				message: "",
 			},
+			processing: false,
 		}
 	},
 	methods: {
 		submitForm() {
+			// show processing text here
+			this.processing = true
+
+			// send request
 			axios
 				.post("https://serve-node-ee.herokuapp.com/contact", {
 					name: this.form.name,
@@ -107,6 +115,8 @@ export default {
 					console.log(error)
 					this.$router.push("/")
 				})
+
+			this.processing = false
 		},
 	},
 }
