@@ -45,7 +45,22 @@
 			>
 				<h2>{{ product.title }}</h2>
 				<el-divider></el-divider>
-				<h1>${{ product.price }}</h1>
+				<h1>${{ SummaryPrice }}</h1>
+				<el-checkbox-group v-model="product.checkList">
+					<el-checkbox label="0" v-model="product.checked[0]"
+						>поддержка датчика тока + ${{ product.configurator[0] }}</el-checkbox
+					>
+					<el-checkbox label="1" v-model="product.checked[1]"
+						>поддержка BMS + ${{ product.configurator[1] }}</el-checkbox
+					>
+					<el-checkbox label="2" v-model="product.checked[2]"
+						>поддержка зарядного устройства LEAF (PDM) + ${{ product.configurator[2] }}</el-checkbox
+					>
+					<el-checkbox label="3" v-model="product.checked[3]"
+						>поддержка быстрой зарядки Сhademo + ${{ product.configurator[3] }}</el-checkbox
+					>
+				</el-checkbox-group>
+				<p></p>
 				<el-button
 					type="text"
 					class="button"
@@ -90,6 +105,15 @@ export default class ProductPage extends Vue {
 		return this.getById(this.$route.params.id)
 	}
 
+	get SummaryPrice() {
+		let sum = 0
+		for (let i = 0; i < this.product.checkList.length; i++) {
+			const element = this.product.checkList[i]
+			sum += this.product.configurator[element]
+		}
+		return this.product.price + sum
+	}
+
 	created() {
 		this.getAllProducts()
 	}
@@ -99,6 +123,7 @@ export default class ProductPage extends Vue {
 	}
 
 	addThisProductToCart(product) {
+		product.id = product.id
 		this.addProductToCart(product)
 	}
 }

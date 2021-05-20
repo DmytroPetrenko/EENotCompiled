@@ -5,9 +5,12 @@ const _products = [
 	{
 		id: 1,
 		title: "ECU for Nissan Leaf",
-		price: 650.0,
+		price: 450.0,
 		inventory: 2000,
 		images: ["noImage.jpg"],
+		configurator: [50, 100, 100, 300],
+		checked: [false, false, false, false],
+		checkList: [],
 	},
 	{
 		id: 2,
@@ -15,6 +18,9 @@ const _products = [
 		price: 400.0,
 		inventory: 1000,
 		images: ["NissanLeafMotor3.jpeg", "NissanLeafMotor2.jpg", "NissanLeafMotor.jpg"],
+		configurator: [],
+		checked: [false, false, false, false],
+		checkList: [],
 	},
 	{
 		id: 3,
@@ -22,6 +28,9 @@ const _products = [
 		price: 300.0,
 		inventory: 5000,
 		images: ["NissanLeafInvertor.jpeg"],
+		configurator: [],
+		checked: [false, false, false, false],
+		checkList: [],
 	},
 	{
 		id: 4,
@@ -29,6 +38,9 @@ const _products = [
 		price: 150.0,
 		inventory: 2000,
 		images: ["nissanrelays.jpg"],
+		configurator: [],
+		checked: [false, false, false, false],
+		checkList: [],
 	},
 	{
 		id: 5,
@@ -36,6 +48,9 @@ const _products = [
 		price: 250.0,
 		inventory: 1000,
 		images: ["noImage.jpg"],
+		configurator: [],
+		checked: [false, false, false, false],
+		checkList: [],
 	},
 	{
 		id: 6,
@@ -43,6 +58,9 @@ const _products = [
 		price: 15.0,
 		inventory: 5000,
 		images: ["ELM327.jpg"],
+		configurator: [],
+		checked: [false, false, false, false],
+		checkList: [],
 	},
 ]
 

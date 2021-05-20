@@ -17,6 +17,9 @@ const getters = {
 				title: product.title,
 				price: product.price,
 				images: product.images,
+				configurator: product.configurator,
+				checked: product.checked,
+				checkList: product.checkList,
 				quantity,
 			}
 		})

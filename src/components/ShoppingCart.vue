@@ -14,7 +14,19 @@
 									<div class="img-wrapper">
 										<img :src="require(`@/assets/img/${product.images[0]}`)" class="image" />
 									</div>
-									<p>{{ product.title }}: ${{ product.price }} x {{ product.quantity }}</p>
+									<div class="productListInCart">
+										<p>{{ product.title }}: ${{ product.price }} x {{ product.quantity }}</p>
+										<div v-if="isProductConfigurated">
+											<ul
+												class="product-configurator"
+												v-for="check in product.checkList"
+												:key="check"
+											>
+												<li>Name of config here: + ${{ product.configurator[check] }}</li>
+											</ul>
+											<p>Total item price: ${{ summaryPrice(product) }}</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<p>{{ $t("shop.cart.total") }}: {{ total }} $</p>
@@ -53,6 +65,21 @@ export default {
 		checkout(products) {
 			this.$store.dispatch("cart/checkout", products)
 		},
+		isProductConfigurated: function(product) {
+			let flag = false
+			if (product.checkList.length > 0) {
+				flag = true
+			}
+			return flag
+		},
+		summaryPrice: function(product) {
+			let sum = 0
+			for (let i = 0; i < product.checkList.length; i++) {
+				const element = product.checkList[i]
+				sum += product.configurator[element]
+			}
+			return product.price + sum
+		},
 	},
 }
 </script>
@@ -85,6 +112,13 @@ li {
 	}
 	p {
 		margin: 0;
+	}
+}
+
+.product-configurator {
+	marker: none;
+	li {
+		padding: 0;
 	}
 }
 </style>
