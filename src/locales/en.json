@@ -67,7 +67,15 @@
 		},
 		"product": {
 			"description": "Description",
-			"addToCart": "Add to cart"
+			"addToCart": "Add to cart",
+			"description-text": {
+				"1": "",
+				"2": "",
+				"3": "",
+				"4": "",
+				"5": "",
+				"6": ""
+			}
 		}
 	},
 	"checkout": {

@@ -57,7 +57,7 @@
 
 				<div class="description">
 					<el-divider content-position="left">{{ $t("shop.product.description") }}</el-divider>
-					<p>{{ product.description }}</p>
+					<p>{{ $t("shop.product.description-text." + product.id) }}</p>
 				</div>
 			</el-col>
 		</el-row>
@@ -148,5 +148,6 @@ export default class ProductPage extends Vue {
 
 .description {
 	margin-top: 60px;
+	white-space: pre-line;
 }
 </style>

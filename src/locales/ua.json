@@ -67,7 +67,15 @@
 		},
 		"product": {
 			"description": "Опис",
-			"addToCart": "Додати у кошик"
+			"addToCart": "Додати у кошик",
+			"description-text": {
+				"1": "",
+				"2": "",
+				"3": "",
+				"4": "",
+				"5": "",
+				"6": ""
+			}
 		}
 	},
 	"checkout": {

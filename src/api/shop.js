@@ -7,7 +7,6 @@ const _products = [
 		title: "ECU for Nissan Leaf",
 		price: 650.0,
 		inventory: 2000,
-		description: "Lorem",
 		images: ["noImage.jpg"],
 	},
 	{
@@ -15,7 +14,6 @@ const _products = [
 		title: "Nissan Leaf Motor",
 		price: 400.0,
 		inventory: 1000,
-		description: "Lorem",
 		images: ["NissanLeafMotor3.jpeg", "NissanLeafMotor2.jpg", "NissanLeafMotor.jpg"],
 	},
 	{
@@ -23,7 +21,6 @@ const _products = [
 		title: "Nissan Leaf Invertor",
 		price: 300.0,
 		inventory: 5000,
-		description: "Lorem",
 		images: ["NissanLeafInvertor.jpeg"],
 	},
 	{
@@ -31,7 +28,6 @@ const _products = [
 		title: "Nissan Leaf HV Relay",
 		price: 150.0,
 		inventory: 2000,
-		description: "Lorem",
 		images: ["nissanrelays.jpg"],
 	},
 	{
@@ -39,7 +35,6 @@ const _products = [
 		title: "Chevrolet Volt BMS Monitoring System",
 		price: 250.0,
 		inventory: 1000,
-		description: "Lorem",
 		images: ["noImage.jpg"],
 	},
 	{
@@ -47,7 +42,6 @@ const _products = [
 		title: "ELM 327 1.5V",
 		price: 15.0,
 		inventory: 5000,
-		description: "Lorem",
 		images: ["ELM327.jpg"],
 	},
 ]
