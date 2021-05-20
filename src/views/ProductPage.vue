@@ -1,5 +1,17 @@
 <template>
 	<div>
+		<el-row :gutter="10">
+			<el-col
+				:xs="{ span: 24, offset: 0 }"
+				:sm="{ span: 16, offset: 4 }"
+				:md="{ span: 10, offset: 2 }"
+			>
+				<el-breadcrumb separator-class="el-icon-arrow-right">
+					<el-breadcrumb-item :to="{ path: '/shop' }">{{ $t("menu.shop") }}</el-breadcrumb-item>
+					<el-breadcrumb-item>{{ product.title }}</el-breadcrumb-item>
+				</el-breadcrumb>
+			</el-col>
+		</el-row>
 		<ShoppingCart />
 		<el-row :gutter="10">
 			<el-col
@@ -54,7 +66,7 @@
 
 <script lang="ts">
 import { Vue, Component } from "vue-property-decorator"
-import { namespace, Action } from "vuex-class"
+import { namespace } from "vuex-class"
 import ShoppingCart from "../components/ShoppingCart.vue"
 
 const Products = namespace("products")
