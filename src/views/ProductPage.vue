@@ -123,7 +123,6 @@ export default class ProductPage extends Vue {
 	}
 
 	addThisProductToCart(product) {
-		product.id = product.id
 		this.addProductToCart(product)
 	}
 }
