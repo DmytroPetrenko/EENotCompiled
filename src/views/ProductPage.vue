@@ -159,9 +159,9 @@ export default class ProductPage extends Vue {
 
 	contains(arr, arr2) {
 		if (arr.length != arr2.length) return false
-		var on = 0
-		for (var i = 0; i < arr.length; i++) {
-			for (var j = 0; j < arr2.length; j++) {
+		let on = 0
+		for (let i = 0; i < arr.length; i++) {
+			for (let j = 0; j < arr2.length; j++) {
 				if (arr[i] === arr2[j]) {
 					on++
 					break
