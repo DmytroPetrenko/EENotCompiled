@@ -20,6 +20,7 @@ const getters = {
 				configurator: product.configurator,
 				checked: product.checked,
 				checkList: product.checkList,
+				totalPrice: product.totalPrice,
 				quantity,
 			}
 		})
@@ -27,6 +28,9 @@ const getters = {
 
 	cartTotalPrice: (state, getters) => {
 		return getters.cartProducts.reduce((total, product) => {
+			if (product.totalPrice) {
+				return total + product.totalPrice * product.quantity
+			}
 			return total + product.price * product.quantity
 		}, 0)
 	},

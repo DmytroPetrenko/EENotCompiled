@@ -48,16 +48,24 @@
 				<h1>${{ SummaryPrice }}</h1>
 				<el-checkbox-group v-model="product.checkList">
 					<el-checkbox label="0" v-model="product.checked[0]"
-						>поддержка датчика тока + ${{ product.configurator[0] }}</el-checkbox
+						>{{ $t("shop.product.products.1.configurator.0") }} + ${{
+							product.configurator[0]
+						}}</el-checkbox
 					>
 					<el-checkbox label="1" v-model="product.checked[1]"
-						>поддержка BMS + ${{ product.configurator[1] }}</el-checkbox
+						>{{ $t("shop.product.products.1.configurator.1") }} + ${{
+							product.configurator[1]
+						}}</el-checkbox
 					>
 					<el-checkbox label="2" v-model="product.checked[2]"
-						>поддержка зарядного устройства LEAF (PDM) + ${{ product.configurator[2] }}</el-checkbox
+						>{{ $t("shop.product.products.1.configurator.2") }} + ${{
+							product.configurator[2]
+						}}</el-checkbox
 					>
 					<el-checkbox label="3" v-model="product.checked[3]"
-						>поддержка быстрой зарядки Сhademo + ${{ product.configurator[3] }}</el-checkbox
+						>{{ $t("shop.product.products.1.configurator.3") }} + ${{
+							product.configurator[3]
+						}}</el-checkbox
 					>
 				</el-checkbox-group>
 				<p></p>
@@ -95,14 +103,32 @@ const Cart = namespace("cart")
 })
 export default class ProductPage extends Vue {
 	@Products.Getter getById: any
+	@Products.Getter getLastElement: any
+	@Products.Getter getShopSize: any
 	@Products.Action getAllProducts: any
+	@Products.Action addNewProduct: any
 	@Cart.Action addProductToCart: any
+	configCombinations: any
+	configIds: any
 	get myCarousel(): any {
 		return this.$refs.carousel
 	}
 
 	get product() {
 		return this.getById(this.$route.params.id)
+	}
+
+	get shopSize() {
+		return this.getShopSize()
+	}
+
+	get config() {
+		let str = ""
+		for (let i = 0; i < this.product.checkList.length; i++) {
+			const element = this.product.checkList[i]
+			str += element
+		}
+		return str
 	}
 
 	get SummaryPrice() {
@@ -114,6 +140,13 @@ export default class ProductPage extends Vue {
 		return this.product.price + sum
 	}
 
+	data() {
+		return {
+			configCombinations: [],
+			configIds: [],
+		}
+	}
+
 	created() {
 		this.getAllProducts()
 	}
@@ -122,8 +155,44 @@ export default class ProductPage extends Vue {
 		this.myCarousel.setActiveItem(index)
 	}
 
+	contains(where, what) {
+		for (var i = 0; i < what.length; i++) {
+			if (where.indexOf(what[i]) == -1) return false
+		}
+		return true
+	}
+
 	addThisProductToCart(product) {
-		this.addProductToCart(product)
+		if (product.checkList.length > 0) {
+			let doWeHaveConfig = false
+			for (let i = 0; i < this.configCombinations.length; i++) {
+				if (this.contains(this.configCombinations[i], this.config)) {
+					this.addProductToCart(this.getById(this.configIds[i]))
+					doWeHaveConfig = true
+					break
+				}
+			}
+
+			if (!doWeHaveConfig) {
+				const newProduct = {
+					id: this.shopSize + 1,
+					title: product.title,
+					price: product.price,
+					inventory: product.inventory,
+					images: product.images,
+					configurator: product.configurator,
+					checked: product.checked,
+					checkList: product.checkList,
+					totalPrice: this.SummaryPrice,
+				}
+				this.configCombinations.push(this.config)
+				this.configIds.push(this.shopSize + 1)
+				this.addNewProduct(newProduct)
+				this.addProductToCart(newProduct)
+			}
+		} else {
+			this.addProductToCart(product)
+		}
 	}
 }
 </script>
@@ -173,5 +242,9 @@ export default class ProductPage extends Vue {
 .description {
 	margin-top: 60px;
 	white-space: pre-line;
+}
+
+.el-checkbox {
+	display: block;
 }
 </style>

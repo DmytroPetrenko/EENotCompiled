@@ -63,7 +63,8 @@
 			"header": "Your Cart",
 			"failText": "Please add some products to cart.",
 			"total": "Total",
-			"checkout": "Checkout"
+			"checkout": "Checkout",
+			"positionTotal": "Total position price"
 		},
 		"product": {
 			"description": "Description",
@@ -75,6 +76,16 @@
 				"4": "",
 				"5": "",
 				"6": ""
+			},
+			"products": {
+				"1": {
+					"configurator": {
+						"0": "",
+						"1": "",
+						"2": "",
+						"3": ""
+					}
+				}
 			}
 		}
 	},
