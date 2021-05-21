@@ -68,6 +68,9 @@ export default {
 	getProducts(cb) {
 		setTimeout(() => cb(_products), 100)
 	},
+	getDefaultProducts(cb) {
+		setTimeout(() => cb(_products.slice(0, 6)), 100)
+	},
 
 	buyProducts(products, cb, errorCb) {
 		setTimeout(() => {

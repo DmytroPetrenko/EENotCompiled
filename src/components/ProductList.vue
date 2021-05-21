@@ -40,10 +40,10 @@
 import { mapState, mapActions } from "vuex"
 export default {
 	computed: mapState({
-		products: (state) => state.products.all,
+		products: (state) => state.products.defaultProducts,
 	}),
 	created: function() {
-		this.$store.dispatch("products/getAllProducts")
+		this.$store.dispatch("products/getAllDefaultProducts")
 	},
 	methods: {
 		...mapActions("cart", ["addProductToCart"]),

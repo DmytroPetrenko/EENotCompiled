@@ -3,6 +3,7 @@ import shop from "../../api/shop"
 // initial state
 const state = () => ({
 	all: [],
+	defaultProducts: [],
 })
 
 // getters
@@ -25,6 +26,11 @@ const actions = {
 			commit("setProducts", products)
 		})
 	},
+	getAllDefaultProducts({ commit }) {
+		shop.getDefaultProducts((products) => {
+			commit("setDefaultProducts", products)
+		})
+	},
 	addNewProduct({ state, commit }, product) {
 		commit("addNewProduct", product)
 	},
@@ -34,6 +40,9 @@ const actions = {
 const mutations = {
 	setProducts(state, products) {
 		state.all = products
+	},
+	setDefaultProducts(state, products) {
+		state.defaultProducts = products
 	},
 
 	addNewProduct(state, product) {

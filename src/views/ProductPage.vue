@@ -46,7 +46,7 @@
 				<h2>{{ product.title }}</h2>
 				<el-divider></el-divider>
 				<h1>${{ SummaryPrice }}</h1>
-				<el-checkbox-group v-model="product.checkList">
+				<el-checkbox-group v-if="product.configurator.length > 0" v-model="product.checkList">
 					<el-checkbox label="0" v-model="product.checked[0]"
 						>{{ $t("shop.product.products.1.configurator.0") }} + ${{
 							product.configurator[0]
@@ -156,7 +156,7 @@ export default class ProductPage extends Vue {
 	}
 
 	contains(where, what) {
-		for (var i = 0; i < what.length; i++) {
+		for (let i = 0; i < what.length; i++) {
 			if (where.indexOf(what[i]) == -1) return false
 		}
 		return true
