@@ -129,6 +129,24 @@ export default {
 			}
 			return arr
 		},
+		productConfig: function() {
+			const arr = []
+			for (let i = 0; i < this.products.length; i++) {
+				const product = this.products[i]
+				let str = ""
+				for (let j = 0; j < product.checkList.length; j++) {
+					const check = product.checkList[j]
+					str +=
+						this.$t("shop.product.products.1.configurator." + check) +
+						": + $" +
+						product.configurator[check] +
+						"      "
+				}
+				str += "Item price with config: $" + product.totalPrice
+				arr[i] = str
+			}
+			return arr
+		},
 	},
 	methods: {
 		checkout(products) {
@@ -145,6 +163,7 @@ export default {
 					productTitles: this.productTitles,
 					productPrices: this.productPrices,
 					productQuantities: this.productQuantities,
+					productConfig: this.productConfig,
 				})
 				.then((response) => {
 					const status = JSON.parse(response.data.response.status)

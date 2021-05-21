@@ -157,11 +157,18 @@ export default class ProductPage extends Vue {
 		this.myCarousel.setActiveItem(index)
 	}
 
-	contains(where, what) {
-		for (let i = 0; i < what.length; i++) {
-			if (where.indexOf(what[i]) == -1) return false
+	contains(arr, arr2) {
+		if (arr.length != arr2.length) return false
+		var on = 0
+		for (var i = 0; i < arr.length; i++) {
+			for (var j = 0; j < arr2.length; j++) {
+				if (arr[i] === arr2[j]) {
+					on++
+					break
+				}
+			}
 		}
-		return true
+		return on == arr.length ? true : false
 	}
 
 	addThisProductToCart(product) {
