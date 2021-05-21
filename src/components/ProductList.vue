@@ -44,6 +44,7 @@ export default {
 	}),
 	created: function() {
 		this.$store.dispatch("products/getAllDefaultProducts")
+		this.$store.dispatch("products/getAllProducts")
 	},
 	methods: {
 		...mapActions("cart", ["addProductToCart"]),

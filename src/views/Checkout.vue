@@ -35,24 +35,42 @@
 							v-model="form.country"
 						></el-input>
 					</el-form-item>
-					<el-form-item>
-						<el-input name="total" :value="`Total price: $` + total" disabled></el-input>
-					</el-form-item>
-					<el-form-item>
-						<el-input
-							v-for="product in products"
-							:key="product.id"
-							:name="`Item` + product.id"
-							:value="
-								product.title +
-									` Product price: $` +
-									product.price +
-									` Quantity: ` +
-									product.quantity
-							"
-							disabled
-						></el-input>
-					</el-form-item>
+
+					<el-row type="flex" v-for="product in products" :key="product.id">
+						<el-col :span="9">
+							<img :src="require(`@/assets/img/${product.images[0]}`)" class="image" />
+						</el-col>
+						<el-col :span="15">
+							<div class="productListInCart">
+								<h2>{{ product.title }}</h2>
+								<p>${{ product.price }} x {{ product.quantity }}</p>
+								<div v-if="product.totalPrice">
+									<h5>Additional config:</h5>
+									<ul class="product-configurator">
+										<li v-for="check in product.checkList" :key="check">
+											{{ $t("shop.product.products.1.configurator." + check) }}: + ${{
+												product.configurator[check]
+											}}
+										</li>
+									</ul>
+									<p>
+										{{ $t("shop.cart.positionTotal") }}:
+										<b>${{ product.totalPrice * product.quantity }}</b>
+									</p>
+								</div>
+								<div v-else>
+									<p>
+										{{ $t("shop.cart.positionTotal") }}:
+										<b>${{ product.price * product.quantity }}</b>
+									</p>
+								</div>
+							</div>
+						</el-col>
+					</el-row>
+
+					<p>
+						{{ $t("shop.cart.total") }}: <b>${{ total }}</b>
+					</p>
 					<el-form-item>
 						<el-button type="primary" @click="submitForm()">
 							{{ $t("checkout.form.submit") }}
@@ -147,81 +165,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// prettier-ignore
-@import url(https://fonts.googleapis.com/css?family=Rubik:300,300i,400,400i,500,500i,700,700i,900,900i&display=swap);
-
-.displaynone {
-	display: none;
+.image {
+	max-height: 200px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	max-width: 50%;
 }
-
-.el-row {
-	flex-wrap: wrap;
-	margin-bottom: 20px;
-	&:last-child {
-		margin-bottom: 0;
-	}
-}
-.el-col {
-	border-radius: 4px;
-	min-width: 250px;
-	padding: 0 20px;
-}
-.google-map {
-	height: 40rem;
-	position: relative;
-	iframe {
-		height: 100%;
-		width: 100%;
-	}
-}
-h2 {
-	font-family: "Rubik", sans-serif;
-	font-size: 3rem;
-	padding-bottom: 1rem !important;
-	font-weight: 300;
-	line-height: 1.2;
-	margin-bottom: 0.5rem;
+ul {
 	margin-top: 0;
+	padding: 0 0 0 15px;
 }
-.icon-message-block {
-	margin-bottom: 10px;
-	padding-bottom: 1rem !important;
-	.el-icon-message {
-		display: inline-block;
-		vertical-align: middle;
-		font-size: 48px;
-		padding-right: 1rem;
-	}
-	h4 {
-		display: inline-block;
-		vertical-align: middle;
-		margin-bottom: 0;
-		line-height: 1;
-		font-style: italic;
-		font-size: 1.5rem;
-		margin-top: 0;
-		font-weight: 300;
-	}
+
+li {
+	list-style-type: none;
 }
-.suggestions {
-	padding-bottom: 1rem !important;
-	h5 {
-		font-family: "Rubik", sans-serif;
-		font-size: 1rem;
-		margin-bottom: 0.5rem;
-		font-weight: 500;
-		line-height: 1.2;
-		margin-top: 0;
-	}
-	.contacts {
-		color: #767676;
-		font-family: "Rubik", sans-serif;
-		font-size: 1rem;
-		margin-top: 0;
-		margin-bottom: 1rem;
-		p {
-			margin: 0;
-		}
-	}
+h5 {
+	margin-bottom: 5px;
 }
 </style>

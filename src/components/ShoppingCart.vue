@@ -39,7 +39,7 @@
 							</ul>
 							<p>{{ $t("shop.cart.total") }}: {{ total }} $</p>
 							<p>
-								<el-button :disabled="!products.length" @click="$router.push('checkout')">
+								<el-button :disabled="!products.length" @click="$router.push('/checkout')">
 									{{ $t("shop.cart.checkout") }}
 								</el-button>
 							</p>
