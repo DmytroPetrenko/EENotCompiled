@@ -103,19 +103,28 @@ const Cart = namespace("cart")
 })
 export default class ProductPage extends Vue {
 	@Products.Getter getById: any
-	@Products.Getter getLastElement: any
 	@Products.Getter getShopSize: any
+	@Products.Getter getConfigCombinations: any
+	@Products.Getter getConfigIds: any
 	@Products.Action getAllProducts: any
 	@Products.Action addNewProduct: any
+	@Products.Action addNewConfigCombinations: any
+	@Products.Action addNewConfigIds: any
 	@Cart.Action addProductToCart: any
-	configCombinations: any
-	configIds: any
 	get myCarousel(): any {
 		return this.$refs.carousel
 	}
 
 	get product() {
 		return this.getById(this.$route.params.id)
+	}
+
+	get configCombinations() {
+		return this.getConfigCombinations()
+	}
+
+	get configIds() {
+		return this.getConfigIds()
 	}
 
 	get shopSize() {
@@ -138,13 +147,6 @@ export default class ProductPage extends Vue {
 			sum += this.product.configurator[element]
 		}
 		return this.product.price + sum
-	}
-
-	data() {
-		return {
-			configCombinations: [],
-			configIds: [],
-		}
 	}
 
 	created() {
@@ -185,8 +187,8 @@ export default class ProductPage extends Vue {
 					checkList: product.checkList,
 					totalPrice: this.SummaryPrice,
 				}
-				this.configCombinations.push(this.config)
-				this.configIds.push(this.shopSize + 1)
+				this.addNewConfigCombinations(this.config)
+				this.addNewConfigIds(this.shopSize + 1)
 				this.addNewProduct(newProduct)
 				this.addProductToCart(newProduct)
 			}

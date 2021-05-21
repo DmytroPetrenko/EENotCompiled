@@ -4,6 +4,8 @@ import shop from "../../api/shop"
 const state = () => ({
 	all: [],
 	defaultProducts: [],
+	configCombinations: [],
+	configIds: [],
 })
 
 // getters
@@ -16,6 +18,12 @@ const getters = {
 	},
 	getShopSize: (state) => () => {
 		return state.all.length
+	},
+	getConfigCombinations: (state) => () => {
+		return state.configCombinations
+	},
+	getConfigIds: (state) => () => {
+		return state.configIds
 	},
 }
 
@@ -34,6 +42,12 @@ const actions = {
 	addNewProduct({ state, commit }, product) {
 		commit("addNewProduct", product)
 	},
+	addNewConfigCombinations({ commit }, config) {
+		commit("addNewConfigCombinations", config)
+	},
+	addNewConfigIds({ commit }, id) {
+		commit("addNewConfigIds", id)
+	},
 }
 
 // mutations
@@ -47,6 +61,14 @@ const mutations = {
 
 	addNewProduct(state, product) {
 		state.all.push(product)
+	},
+
+	addNewConfigCombinations(state, config) {
+		state.configCombinations.push(config)
+	},
+
+	addNewConfigIds(state, id) {
+		state.configIds.push(id)
 	},
 
 	decrementProductInventory(state, { id }) {
