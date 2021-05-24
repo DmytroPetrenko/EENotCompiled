@@ -169,12 +169,10 @@ export default {
 				productQuantities: this.productQuantities,
 				productConfig: this.productConfig,
 			}
-			console.log(prdct)
 			axios
 				.post("https://serve-node-ee.herokuapp.com/checkout", prdct)
 				.then((response) => {
 					const result = response.data.result
-					console.log(result)
 
 					if (result) {
 						this.$router.push("/shop")
