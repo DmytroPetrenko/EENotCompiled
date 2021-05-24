@@ -85,6 +85,7 @@
 <script>
 import { mapGetters, mapState } from "vuex"
 import axios from "axios"
+import products from "@/store/modules/products"
 
 export default {
 	data() {
@@ -134,15 +135,19 @@ export default {
 			for (let i = 0; i < this.products.length; i++) {
 				const product = this.products[i]
 				let str = ""
-				for (let j = 0; j < product.checkList.length; j++) {
-					const check = product.checkList[j]
-					str +=
-						this.$t("shop.product.products.1.configurator." + check) +
-						": + $" +
-						product.configurator[check] +
-						"      "
+				if (product.totalPrice) {
+					for (let j = 0; j < product.checkList.length; j++) {
+						const check = product.checkList[j]
+						str +=
+							this.$t("shop.product.products.1.configurator." + check) +
+							": + $" +
+							product.configurator[check] +
+							"      "
+					}
+					str += "Item price with config: $" + product.totalPrice
+				} else {
+					str = "No config"
 				}
-				str += "Item price with config: $" + product.totalPrice
 				arr[i] = str
 			}
 			return arr
@@ -153,30 +158,31 @@ export default {
 			this.$store.dispatch("cart/checkout", products)
 		},
 		submitForm() {
+			const prdct = {
+				name: this.form.name,
+				phone: this.form.phone,
+				email: this.form.email,
+				country: this.form.country,
+				total: this.total,
+				productTitles: this.productTitles,
+				productPrices: this.productPrices,
+				productQuantities: this.productQuantities,
+				productConfig: this.productConfig,
+			}
+			console.log(prdct)
 			axios
-				.post("https://serve-node-ee.herokuapp.com/checkout", {
-					name: this.form.name,
-					phone: this.form.phone,
-					email: this.form.email,
-					country: this.form.country,
-					total: this.total,
-					productTitles: this.productTitles,
-					productPrices: this.productPrices,
-					productQuantities: this.productQuantities,
-					productConfig: this.productConfig,
-				})
+				.post("https://serve-node-ee.herokuapp.com/checkout", prdct)
 				.then((response) => {
-					const status = JSON.parse(response.data.response.status)
-					console.log(status)
+					const result = response.data.result
+					console.log(result)
 
-					//redirect logic
-					if (status == "200") {
+					if (result) {
 						this.$router.push("/shop")
 					}
 				})
 				.catch((error) => {
 					console.log(error)
-					this.$router.push("/shop")
+					this.$router.push("/shop/product/1")
 				})
 		},
 	},
