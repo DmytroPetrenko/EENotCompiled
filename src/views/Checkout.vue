@@ -77,6 +77,9 @@
 						</el-button>
 					</el-form-item>
 				</el-form>
+				<div class="processing-message" v-if="processing">
+					<div v-loading="processing" element-loading-text="Sending..." customClass="loading"></div>
+				</div>
 			</el-col>
 		</el-row>
 	</div>
@@ -85,7 +88,6 @@
 <script>
 import { mapGetters, mapState } from "vuex"
 import axios from "axios"
-import products from "@/store/modules/products"
 
 export default {
 	data() {
@@ -96,6 +98,7 @@ export default {
 				email: "",
 				country: "",
 			},
+			processing: false,
 		}
 	},
 	computed: {
@@ -158,6 +161,9 @@ export default {
 			this.$store.dispatch("cart/checkout", products)
 		},
 		submitForm() {
+			const _this = this
+			_this.processing = true
+
 			const prdct = {
 				name: this.form.name,
 				phone: this.form.phone,
@@ -184,6 +190,7 @@ export default {
 							duration: 4500,
 						})
 					}
+					_this.processing = false
 				})
 				.catch((error) => {
 					this.$router.push("/shop")

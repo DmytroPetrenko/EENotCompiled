@@ -78,6 +78,9 @@
 					"ignoreParameters": true,
 					"ignoreProperties": true
 				}
+			],
+			"@typescript-eslint/no-this-alias": [
+				"off"
 			]
 		},
 		"overrides": [

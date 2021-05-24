@@ -92,9 +92,12 @@ export default {
 	methods: {
 		submitForm() {
 			// show processing text here
-			this.processing = true
-
-			// send request
+			const _this = this
+			_this.processing = true
+			/* setTimeout(() => {
+				// send request
+			
+			}, 1000) */
 			axios
 				.post("https://serve-node-ee.herokuapp.com/contact", {
 					name: this.form.name,
@@ -106,7 +109,6 @@ export default {
 					const result = response.data.result
 
 					if (result) {
-						this.$router.push("/")
 						this.$notify({
 							title: this.$t("notifications.succesfullContactTitle"),
 							message: this.$t("notifications.succesfullContact"),
@@ -115,9 +117,9 @@ export default {
 							duration: 4500,
 						})
 					}
+					_this.processing = false
 				})
 				.catch((error) => {
-					this.$router.push("/")
 					this.$notify.error({
 						title: this.$t("notifications.errorTitle"),
 						message: this.$t("notifications.error"),
@@ -125,8 +127,6 @@ export default {
 						duration: 4500,
 					})
 				})
-
-			this.processing = false
 		},
 	},
 }
