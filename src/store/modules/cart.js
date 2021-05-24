@@ -44,12 +44,12 @@ const getters = {
 
 // actions
 const actions = {
-	checkout({ commit, state }, products) {
+	checkout({ commit, state } /* , products */) {
 		const savedCartItems = [...state.items]
 		commit("setCheckoutStatus", null)
 		// empty cart
 		commit("setCartItems", { items: [] })
-		shop.buyProducts(
+		/* 		shop.buyProducts(
 			products,
 			() => commit("setCheckoutStatus", "successful"),
 			() => {
@@ -57,7 +57,7 @@ const actions = {
 				// rollback to the cart saved before sending the request
 				commit("setCartItems", { items: savedCartItems })
 			},
-		)
+		) */
 	},
 
 	addProductToCart({ state, commit }, product) {

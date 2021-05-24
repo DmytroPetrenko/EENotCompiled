@@ -157,8 +157,8 @@ export default {
 		},
 	},
 	methods: {
-		checkout(products) {
-			this.$store.dispatch("cart/checkout", products)
+		checkout() {
+			this.$store.dispatch("cart/checkout" /* , this.products */)
 		},
 		submitForm() {
 			const _this = this
@@ -190,10 +190,11 @@ export default {
 							duration: 4500,
 						})
 					}
+					this.checkout()
 					_this.processing = false
 				})
 				.catch((error) => {
-					this.$router.push("/shop")
+					//this.$router.push("/shop")
 					this.$notify.error({
 						title: this.$t("notifications.errorTitle"),
 						message: this.$t("notifications.error"),

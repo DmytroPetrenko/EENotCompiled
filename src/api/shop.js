@@ -79,9 +79,10 @@ export default {
 	},
 
 	buyProducts(products, cb, errorCb) {
-		setTimeout(() => {
+		/* setTimeout(() => {
 			// simulate random checkout failure.
 			Math.random() > 0 || navigator.webdriver ? cb() : errorCb()
-		}, 100)
+		}, 100) */
+		cb()
 	},
 }
