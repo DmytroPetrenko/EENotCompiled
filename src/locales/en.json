@@ -95,5 +95,13 @@
 			"country": "Country",
 			"submit": "Submit order"
 		}
+	},
+	"notifications": {
+		"succesfullOrderTitle": "",
+		"succesfullOrder": "",
+		"succesfullContactTitle": "",
+		"succesfullContact": "",
+		"errorTitle": "",
+		"error": ""
 	}
 }

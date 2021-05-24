@@ -95,5 +95,13 @@
 			"country": "Страна",
 			"submit": "Подтвердить заказ"
 		}
+	},
+	"notifications": {
+		"succesfullOrderTitle": "Успешно",
+		"succesfullOrder": "Заказ успешно отправлен! Ожидайте, с вами свяжутся",
+		"succesfullContactTitle": "Успешно",
+		"succesfullContact": "Форма успешно отправлена!",
+		"errorTitle": "Ошибка",
+		"error": "Упс... Что-то пошло не так. Попробуйте, пожалуйста, еще раз"
 	}
 }

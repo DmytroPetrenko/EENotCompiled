@@ -176,11 +176,23 @@ export default {
 
 					if (result) {
 						this.$router.push("/shop")
+						this.$notify({
+							title: this.$t("notifications.succesfullOrderTitle"),
+							message: this.$t("notifications.succesfullOrder"),
+							type: "success",
+							offset: 100,
+							duration: 4500,
+						})
 					}
 				})
 				.catch((error) => {
-					console.log(error)
-					this.$router.push("/shop/product/1")
+					this.$router.push("/shop")
+					this.$notify.error({
+						title: this.$t("notifications.errorTitle"),
+						message: this.$t("notifications.error"),
+						offset: 100,
+						duration: 4500,
+					})
 				})
 		},
 	},

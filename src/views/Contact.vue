@@ -103,17 +103,27 @@ export default {
 					message: this.form.message,
 				})
 				.then((response) => {
-					const status = JSON.parse(response.data.response.status)
-					console.log(status)
+					const result = response.data.result
 
-					//redirect logic
-					if (status == "200") {
+					if (result) {
 						this.$router.push("/")
+						this.$notify({
+							title: this.$t("notifications.succesfullContactTitle"),
+							message: this.$t("notifications.succesfullContact"),
+							type: "success",
+							offset: 100,
+							duration: 4500,
+						})
 					}
 				})
 				.catch((error) => {
-					console.log(error)
 					this.$router.push("/")
+					this.$notify.error({
+						title: this.$t("notifications.errorTitle"),
+						message: this.$t("notifications.error"),
+						offset: 100,
+						duration: 4500,
+					})
 				})
 
 			this.processing = false

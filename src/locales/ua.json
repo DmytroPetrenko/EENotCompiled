@@ -95,5 +95,13 @@
 			"country": "Країна",
 			"submit": "Підтвердити замовлення"
 		}
+	},
+	"notifications": {
+		"succesfullOrderTitle": "",
+		"succesfullOrder": "",
+		"succesfullContactTitle": "",
+		"succesfullContact": "",
+		"errorTitle": "",
+		"error": ""
 	}
 }
