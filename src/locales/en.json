@@ -70,20 +70,20 @@
 			"description": "Description",
 			"addToCart": "Add to cart",
 			"description-text": {
-				"1": "",
+				"1": "ECU for converting a vehicle into an electric vehicle. \n Functions: \n- Controlling the motor and Leaf inverter via CAN bus \n- Controlling power contactors \n- Controlling the charger and DC-DC converter from Leaf \n- Working with Chevrolet BMS Volt GEN1, GEN2. Measuring cell voltages, battery temperature, cell balancing. \n- Controlling fast charging through the Shademo port. \n- Working with the current sensor Leaf or Volt \n- Information output on Android and Windows devices \n- Information output on the dashboard \n- Setting parameters",
 				"2": "",
 				"3": "",
 				"4": "",
-				"5": "",
+				"5": "A device for displaying a map of voltage cells and battery temperature sensors Chevrolet Volt GEN1, GEN2 via ELM 327 on Android devices. Suitable for monitoring the condition of the second battery (additional battery) based on the Chevrolet Volt battery. There are outputs for connecting a buzzer or relay, for indicating or disconnecting the second battery in case of a problem with it.",
 				"6": ""
 			},
 			"products": {
 				"1": {
 					"configurator": {
-						"0": "",
-						"1": "",
-						"2": "",
-						"3": ""
+						"0": "current sensor support",
+						"1": "BMS support",
+						"2": "Leaf Charger (PDM) support ",
+						"3": "support for DC Fast Charging (CHAdeMo)"
 					}
 				}
 			}
@@ -97,11 +97,11 @@
 		}
 	},
 	"notifications": {
-		"succesfullOrderTitle": "",
-		"succesfullOrder": "",
-		"succesfullContactTitle": "",
-		"succesfullContact": "",
-		"errorTitle": "",
-		"error": ""
+		"succesfullOrderTitle": "The order has been successfully sent!",
+		"succesfullOrder": "Thank you for your order! Expect to be contacted.",
+		"succesfullContactTitle": "The order has been successfully sent!",
+		"succesfullContact": "Form sent successfully!",
+		"errorTitle": "Error",
+		"error": "Something went wrong. Please try again."
 	}
 }
