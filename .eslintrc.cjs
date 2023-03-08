@@ -3,23 +3,12 @@ module.exports = {
   env: {
     node: true,
   },
-  extends: [
-    'plugin:vue/vue3-recommended',
-    'eslint:recommended',
-    '@vue/eslint-config-typescript/recommended',
-    '@vue/eslint-config-prettier',
-  ],
-  plugins: ['only-error', 'import', 'unused-imports'],
   rules: {
     curly: ['error', 'all'],
     'require-await': 'error',
     'no-console': 'error',
     'no-debugger': 'error',
     'prettier/prettier': 'error',
-    '@typescript-eslint/camelcase': 'off',
-    '@typescript-eslint/no-non-null-assertion': 'off',
-    '@typescript-eslint/explicit-module-boundary-types': 'off',
-    '@typescript-eslint/no-var-requires': 'off',
     'unused-imports/no-unused-imports': 2,
     'vue/no-v-html': 'off',
     'vue/valid-define-props': 'error',
@@ -159,10 +148,4 @@ module.exports = {
       },
     ],
   },
-  ignorePatterns: [
-    'shared/proto/**/*.ts',
-    'shared/proto/**/*.js',
-    'qliqweb-protobuf/**/*.ts',
-    'chat-demo',
-  ],
 }

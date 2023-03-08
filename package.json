@@ -19,6 +19,7 @@
 		"connect-history-api-fallback": "^1.6.0",
 		"core-js": "^3.6.5",
 		"element-ui": "^2.4.5",
+		"firebase": "^9.17.2",
 		"normalize.css": "^8.0.1",
 		"travis-cli": "^1.0.9",
 		"vue": "^2.6.11",

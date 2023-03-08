@@ -6,11 +6,8 @@
     label-position="top"
     class="auth-form"
   >
-    <el-form-item label="Username" prop="username">
-      <el-input
-        v-model="form.username"
-        placeholder="Enter your username"
-      ></el-input>
+    <el-form-item label="Email" prop="email">
+      <el-input v-model="form.email" placeholder="Enter your email"></el-input>
     </el-form-item>
     <el-form-item label="Password" prop="password">
       <el-input
@@ -30,14 +27,14 @@ export default {
   data() {
     return {
       form: {
-        username: '',
+        email: '',
         password: '',
       },
       rules: {
-        username: [
+        email: [
           {
             required: true,
-            message: 'Please enter your username',
+            message: 'Please enter your email',
             trigger: 'blur',
           },
         ],
@@ -51,6 +48,7 @@ export default {
       },
     }
   },
+
   methods: {
     submitForm() {
       this.$refs.form.validate(valid => {
@@ -58,11 +56,27 @@ export default {
           // Send form data to authentication script
           // using AJAX or form submission
           console.log(this.form)
+
+          this.login()
         } else {
           console.log('Form validation failed')
           return false
         }
       })
+    },
+
+    async login() {
+      try {
+        const { email, password } = this.form
+
+        await this.$store.dispatch('user/logIn', {
+          email,
+          password,
+        })
+        //this.$router.push('/')
+      } catch (err) {
+        console.log(err)
+      }
     },
   },
 }
