@@ -4,18 +4,40 @@
 	</div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator"
-
-@Component({
-	components: {},
-})
-export default class Home extends Vue {
+<script>
+export default {
+	name: "Home",
+	data() {
+		return {
+			sessionData: "",
+		}
+	},
 	mounted() {
+		// Завантажити дані з sessionStorage при завантаженні компонента
+		this.sessionData = sessionStorage.getItem("originalUrl") || ""
+
+		// Додати прослуховувач подій для відслідковування змін sessionStorage
+		window.addEventListener("storage", this.handleStorageChange)
+
 		const fbScript = document.createElement("script")
 		fbScript.setAttribute("src", "https://apps.elfsight.com/p/platform.js")
 		fbScript.setAttribute("defer", "")
 		document.head.appendChild(fbScript)
-	}
+	},
+	beforeDestroy() {
+		// Очистити прослуховувач подій при знищенні компонента
+		window.removeEventListener("storage", this.handleStorageChange)
+	},
+	methods: {
+		// Метод, який викликається при зміні sessionStorage
+		handleStorageChange(event) {
+			if (event.key === "originalUrl") {
+				this.sessionData = event.newValue
+				if (this.sessionData) {
+					this.$router.push({ path: this.sessionData }) // Виконати навігацію до нового шляху
+				}
+			}
+		},
+	},
 }
 </script>
