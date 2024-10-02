@@ -1,21 +1,58 @@
 <template>
-	<div class="home">
-		<div class="elfsight-app-0b842362-4c2a-4913-aae5-b20594c8c9ae"></div>
-	</div>
+  <div class="home">
+    <div class="elfsight-app-0b842362-4c2a-4913-aae5-b20594c8c9ae"></div>
+  </div>
 </template>
 
-<script lang="ts">
-import { Component, Vue } from "vue-property-decorator"
+<script>
+export default {
+  name: "Home",
+  data() {
+    return {
+      sessionData: "",
+    }
+  },
+  mounted() {
+    // Завантажити дані з sessionStorage при завантаженні компонента
+    this.sessionData = sessionStorage.getItem("originalUrl") || ""
 
-@Component({
-	components: {},
-})
-export default class Home extends Vue {
-	mounted() {
-		const fbScript = document.createElement("script")
-		fbScript.setAttribute("src", "https://apps.elfsight.com/p/platform.js")
-		fbScript.setAttribute("defer", "")
-		document.head.appendChild(fbScript)
-	}
+    // Якщо дані є, виконати перенаправлення
+    if (this.sessionData) {
+      this.$nextTick(() => {
+        sessionStorage.removeItem("originalUrl")
+        this.$router.push(this.sessionData)
+      })
+    }
+
+    // Додати прослуховувач подій для відслідковування змін sessionStorage
+    window.addEventListener("storage", this.handleStorageChange)
+
+    const fbScript = document.createElement("script")
+    fbScript.setAttribute("src", "https://apps.elfsight.com/p/platform.js")
+    fbScript.setAttribute("defer", "")
+    document.head.appendChild(fbScript)
+  },
+  beforeDestroy() {
+    // Очистити прослуховувач подій при знищенні компонента
+    window.removeEventListener("storage", this.handleStorageChange)
+  },
+  methods: {
+    // Метод, який викликається при зміні sessionStorage
+    handleStorageChange(event) {
+      if (event.key === "originalUrl") {
+        this.sessionData = event.newValue
+        if (this.sessionData) {
+          sessionStorage.clear()
+          this.$router.push({ path: this.sessionData }) // Виконати навігацію до нового шляху
+        }
+      }
+    },
+  },
 }
 </script>
+
+<style scoped>
+.home {
+  /* Додай стилі, якщо необхідно */
+}
+</style>
