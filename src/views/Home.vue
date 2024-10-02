@@ -34,6 +34,7 @@ export default {
 			if (event.key === "originalUrl") {
 				this.sessionData = event.newValue
 				if (this.sessionData) {
+					sessionStorage.clear()
 					this.$router.push({ path: this.sessionData }) // Виконати навігацію до нового шляху
 				}
 			}
